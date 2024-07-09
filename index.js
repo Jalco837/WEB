@@ -1,9 +1,14 @@
-import express from 'express'
+import express from 'express';
 
-const app = express()
+const app = express();
 
-app.get('/', (req, res)=>{
-    res.send('Hola ya pude deployar apenas es el comienzo')
-})
-app.listen(3000)
-console.log('Servidor en el puerto', 3000);
+// Servir archivos estáticos desde la carpeta 'public'
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
+app.listen(3000, () => {
+    console.log('Servidor en el puerto', 3000);
+});

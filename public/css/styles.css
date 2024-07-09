@@ -1,0 +1,186 @@
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff; /* Color blanco */
+    font-size: 22px;
+  }
+
+
+.navbar-custom {
+    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
+}
+.dropdown-menu {
+    max-height: 200px; /* Altura máxima de la lista desplegable */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    font-size: 22px;
+}
+
+.banner {
+  position: relative;
+  width: 90%;
+  height: 500px; /* Ajusta esta altura según tus necesidades */
+  margin: 20px auto;
+  overflow: hidden; /* Oculta el desbordamiento si la imagen es más alta */
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin deformarse */
+}
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}
+.offer-container {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 2.5rem; /* Tamaño de fuente más grande */
+  font-weight: bold;
+}
+.separator-line {
+  width: 90%;
+  height: 4px;
+  background-color: #007BFF; /* Ajusta el color según tus necesidades */
+  margin: 10px auto;
+}
+.content-container {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  border: none; /* Elimina el borde */
+  border-radius: 0; /* Elimina el borde redondeado */
+}
+.catalogo {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.item {
+  flex: 1 0 18%; /* Ajusta el tamaño según sea necesario */
+  margin: 10px;
+  box-sizing: border-box;
+  border: none; /* Elimina el borde */
+}
+.carousel-inner img {
+  width: 100%;
+  height: 200px; /* Ajusta esta altura según tus necesidades */
+  object-fit: cover;
+}
+.carousel-container {
+  margin-top: 20px; /* Ajusta este valor según tus necesidades */
+}
+
+.descripcion {
+  text-align: center;
+  margin-top: 10px;
+}
+.contacto {
+  margin-top: 20px;
+}
+.container.contacto {
+  border: none; /* Elimina el borde */
+  border-radius: 0; /* Elimina el borde redondeado */
+  text-align: center;
+}
+/* Estilos para el contenedor de redes sociales */
+.redes-sociales {
+  text-align: center;
+  margin-top: 30px; /* Espacio hacia arriba para separar del contenido superior */
+}
+
+/* Estilos para los iconos de redes sociales */
+.redes-sociales a {
+  display: inline-block;
+  margin-right: 40px; /* Espacio entre los iconos */
+  margin-bottom: 20px; /* Espacio hacia abajo entre los iconos */
+  transform: translateY(0);
+}
+
+.redes-sociales img {
+  width: 45px; /* Ancho de los iconos */
+  height: 45px; /* Altura de los iconos */
+  transition: transform 0.3s ease; /* Transición suave para la escala */
+}
+
+.redes-sociales img:hover {
+  transform: scale(2.0); /* Escala del icono al pasar el cursor */
+}
+h5 {
+  text-align: center;
+  margin: 20px auto;
+  font-size: 2.5rem; /* Tamaño de fuente más grande */
+  font-weight: bold;
+}
+.quienes-somos, .mision, .vision {
+  margin-top: 40px;
+  text-align: center;
+}
+.informacion-adicional {
+  display: none;
+  margin-top: 20px;
+  text-align: justify;
+}
+.imagen-reducida {
+  display: block; /* Asegura que la imagen sea un bloque para centrarla automáticamente */
+  margin: auto; /* Centra la imagen horizontalmente */
+  margin-top: 20px; /* Espacio superior para separar del texto */
+  width: 300px;
+  height: 300px;
+}
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .informacion-adicional img {
+    animation: float 2s ease-in-out infinite; /* Aplica la animación */
+    text-align: center;
+  }
+  .quienes-somos-imagen {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  color: white;
+  position: relative;
+  bottom: 0;
+  margin-top: 100px; /* Añadir margen superior para separar del contenido anterior */
+  text-align: center;
+  color: black;
+}
+
+footer p {
+  margin: 0;
+}
+.custom-control-prev, .custom-control-next {
+  background-color: transparent;
+  border: none;
+}
+
+.custom-control-prev-icon, .custom-control-next-icon {
+  background-image: none;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+
