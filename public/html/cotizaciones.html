@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar Hoteles</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Formulario de Viaje</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/css/cotizaciones.css">
+    <link rel="stylesheet" href="css/cotizaciones.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
-            <img src="/images/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
+            <img src="imagenes/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -49,47 +49,49 @@
     <div class="container mt-5">
         <h2 class="mb-4 text-center">Formulario de Viaje</h2>
         <form id="travelForm">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="name">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese su nombre" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Número de Celular</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ingrese su número de celular" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="departureDate">Día de Salida</label>
-                        <input type="date" class="form-control" id="departureDate" name="departureDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="children">Cantidad de Niños/Menores de 18 años</label>
-                        <input type="number" class="form-control" id="children" name="children" min="0" placeholder="Ingrese la cantidad de niños" required>
-                    </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese su nombre" required>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="destination">Lugar/Destino</label>
-                        <input type="text" class="form-control" id="destination" name="destination" placeholder="Ingrese el lugar o destino" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="returnDate">Día de Llegada</label>
-                        <input type="date" class="form-control" id="returnDate" name="returnDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="adults">Cantidad de Adultos</label>
-                        <input type="number" class="form-control" id="adults" name="adults" min="1" placeholder="Ingrese la cantidad de adultos" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Descripción</label>
-                        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describa lo que le gustaría hacer en el viaje" required></textarea>
-                    </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
                 </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Número de Celular</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ingrese su número de celular" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="destination">Lugar/Destino</label>
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Ingrese el lugar o destino" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="departureDate">Día de Salida</label>
+                    <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="returnDate">Día de Llegada</label>
+                    <input type="date" class="form-control" id="returnDate" name="returnDate" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="children">Cantidad de Niños/Menores de 18 años</label>
+                    <input type="number" class="form-control" id="children" name="children" min="0" placeholder="Ingrese la cantidad de niños" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="adults">Cantidad de Adultos</label>
+                    <input type="number" class="form-control" id="adults" name="adults" min="1" placeholder="Ingrese la cantidad de adultos" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" name="description" rows="2" placeholder="Describa lo que le gustaría hacer en el viaje" required></textarea>
             </div>
             <button type="button" class="btn btn-primary btn-block" onclick="sendWhatsApp()">Enviar</button>
         </form>
@@ -99,7 +101,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function sendWhatsApp() {
-            // Función para enviar la cotización por WhatsApp
+            // Obtener los valores del formulario
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var phone = document.getElementById('phone').value;
@@ -110,7 +112,9 @@
             var adults = document.getElementById('adults').value;
             var description = document.getElementById('description').value;
 
+            // Validar que todos los campos estén llenos
             if (name && email && phone && destination && departureDate && returnDate && children && adults && description) {
+                // Enviar los datos al servidor
                 fetch('/guardar_cotizacion', {
                     method: 'POST',
                     headers: {
@@ -130,9 +134,16 @@
                 })
                 .then(response => {
                     if (response.ok) {
+                        // Limpiar el formulario
                         document.getElementById('travelForm').reset();
+
+                        // Formar el mensaje de WhatsApp
                         var message = `Hola! Me llamo ${name}. Mi correo es ${email} y mi número de celular es ${phone}. Me gustaría viajar a ${destination} del ${departureDate} al ${returnDate}. Somos ${adults} adultos y ${children} niños. Me gustaría ${description}.`;
+
+                        // Codificar el mensaje para que sea una URL válida
                         var encodedMessage = encodeURIComponent(message);
+
+                        // Redirigir a WhatsApp
                         window.open(`https://wa.me/525573868024?text=${encodedMessage}`, '_blank');
                     } else {
                         alert('Hubo un problema al enviar la cotización. Por favor, inténtelo de nuevo.');
