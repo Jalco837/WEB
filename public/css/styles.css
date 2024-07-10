@@ -1,20 +1,33 @@
+/* Estilos generales */
+body {
+  background-color: #f8f9fa;
+  background-image: url('https://www.gratistodo.com/wp-content/uploads/2017/02/degradados-wallpapers-2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos para la barra de navegación personalizada */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
-    color: #ffffff; /* Color blanco */
-    font-size: 22px;
-  }
-
+  color: #ffffff; /* Color blanco */
+  font-size: 22px;
+}
 
 .navbar-custom {
-    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
-}
-.dropdown-menu {
-    max-height: 200px; /* Altura máxima de la lista desplegable */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
-    font-size: 22px;
+  background-color: #73C6B6; /* Cambia el color de fondo del navbar */
 }
 
+.dropdown-menu {
+  max-height: 200px; /* Altura máxima de la lista desplegable */
+  overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
+  overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+  font-size: 22px;
+}
+
+/* Estilos para el banner */
 .banner {
   position: relative;
   width: 90%;
@@ -22,11 +35,13 @@
   margin: 20px auto;
   overflow: hidden; /* Oculta el desbordamiento si la imagen es más alta */
 }
+
 .banner img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Asegura que la imagen cubra el contenedor sin deformarse */
 }
+
 .banner-text {
   position: absolute;
   top: 50%;
@@ -36,18 +51,22 @@
   font-size: 2rem;
   text-align: center;
 }
+
+/* Estilos para la sección de ofertas */
 .offer-container {
   text-align: center;
   margin: 20px auto;
   font-size: 2.5rem; /* Tamaño de fuente más grande */
   font-weight: bold;
 }
+
 .separator-line {
   width: 90%;
   height: 4px;
   background-color: #007BFF; /* Ajusta el color según tus necesidades */
   margin: 10px auto;
 }
+
 .content-container {
   width: 90%;
   margin: 20px auto;
@@ -55,22 +74,26 @@
   border: none; /* Elimina el borde */
   border-radius: 0; /* Elimina el borde redondeado */
 }
+
 .catalogo {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
+
 .item {
   flex: 1 0 18%; /* Ajusta el tamaño según sea necesario */
   margin: 10px;
   box-sizing: border-box;
   border: none; /* Elimina el borde */
 }
+
 .carousel-inner img {
   width: 100%;
   height: 200px; /* Ajusta esta altura según tus necesidades */
   object-fit: cover;
 }
+
 .carousel-container {
   margin-top: 20px; /* Ajusta este valor según tus necesidades */
 }
@@ -79,14 +102,17 @@
   text-align: center;
   margin-top: 10px;
 }
+
 .contacto {
   margin-top: 20px;
 }
+
 .container.contacto {
   border: none; /* Elimina el borde */
   border-radius: 0; /* Elimina el borde redondeado */
   text-align: center;
 }
+
 /* Estilos para el contenedor de redes sociales */
 .redes-sociales {
   text-align: center;
@@ -110,21 +136,25 @@
 .redes-sociales img:hover {
   transform: scale(2.0); /* Escala del icono al pasar el cursor */
 }
+
 h5 {
   text-align: center;
   margin: 20px auto;
   font-size: 2.5rem; /* Tamaño de fuente más grande */
   font-weight: bold;
 }
+
 .quienes-somos, .mision, .vision {
   margin-top: 40px;
   text-align: center;
 }
+
 .informacion-adicional {
   display: none;
   margin-top: 20px;
   text-align: justify;
 }
+
 .imagen-reducida {
   display: block; /* Asegura que la imagen sea un bloque para centrarla automáticamente */
   margin: auto; /* Centra la imagen horizontalmente */
@@ -132,44 +162,45 @@ h5 {
   width: 300px;
   height: 300px;
 }
-  @keyframes float {
-    0% {
+
+@keyframes float {
+  0% {
       transform: translateY(0);
-    }
-    50% {
+  }
+  50% {
       transform: translateY(-10px);
-    }
-    100% {
+  }
+  100% {
       transform: translateY(0);
-    }
   }
-  
-  .informacion-adicional img {
-    animation: float 2s ease-in-out infinite; /* Aplica la animación */
-    text-align: center;
-  }
-  .quienes-somos-imagen {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.informacion-adicional img {
+  animation: float 2s ease-in-out infinite; /* Aplica la animación */
+  text-align: center;
+}
+
+.quienes-somos-imagen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer {
   text-align: center;
   padding: 10px;
   background-color: white;
-  color: white;
+  color: black;
   position: relative;
   bottom: 0;
   margin-top: 100px; /* Añadir margen superior para separar del contenido anterior */
-  text-align: center;
-  color: black;
 }
 
 footer p {
   margin: 0;
 }
+
 .custom-control-prev, .custom-control-next {
   background-color: transparent;
   border: none;
@@ -183,4 +214,65 @@ footer p {
   padding: 3px;
 }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-nav .nav-link {
+      font-size: 18px;
+  }
 
+  .dropdown-menu {
+      font-size: 18px;
+  }
+
+  .banner {
+      height: 300px;
+  }
+
+  .banner-text {
+      font-size: 1.5rem;
+  }
+
+  .offer-container {
+      font-size: 2rem;
+  }
+
+  .separator-line {
+      width: 100%;
+  }
+
+  .catalogo {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .item {
+      flex: 1 0 80%; /* Ajusta el tamaño según sea necesario */
+  }
+
+  .carousel-inner img {
+      height: 150px;
+  }
+
+  .descripcion {
+      font-size: 1.5rem;
+  }
+
+  .redes-sociales img {
+      width: 35px; /* Ancho de los iconos */
+      height: 35px; /* Altura de los iconos */
+  }
+
+  h5 {
+      font-size: 2rem;
+  }
+
+  .imagen-reducida {
+      width: 100%;
+      height: auto;
+  }
+
+  footer {
+      margin-top: 50px;
+  }
+}
