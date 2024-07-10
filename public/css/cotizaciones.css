@@ -1,17 +1,27 @@
+/* Estilos generales */
 body {
     background-color: #f8f9fa;
+    background-image: url();
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 
+/* Estilos para títulos */
 h2 {
     color: #343a40;
     margin-bottom: 20px;
 }
 
+/* Estilos para formularios */
 .form-control {
     border-radius: 0.25rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos para botones */
 .btn-primary {
     background-color: #007bff;
     border: none;
@@ -21,6 +31,7 @@ h2 {
     background-color: #0056b3;
 }
 
+/* Estilos para el contenedor principal */
 .container {
     background: white;
     padding: 20px;
@@ -28,38 +39,47 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
 }
+
+/* Estilos para la barra de navegación personalizada */
+.navbar-custom {
+    background-color: #73C6B6; /* Cambia el color de fondo del navbar */
+}
+
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
     color: #ffffff; /* Color blanco */
     font-size: 22px;
-  }
-
-
-.navbar-custom {
-    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
 }
+
+/* Estilos para el menú desplegable */
 .dropdown-menu {
     max-height: 200px; /* Altura máxima de la lista desplegable */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
     overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
     font-size: 22px;
 }
-.navbar-custom .navbar-brand,
-.navbar-custom .navbar-nav .nav-link {
-    color: #ffffff; /* Color blanco */
-    font-size: 22px;
-  }
 
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
 
-.navbar-custom {
-    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
-}
-.dropdown-menu {
-    max-height: 200px; /* Altura máxima de la lista desplegable */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
-    font-size: 22px;
-}
-.dody{
-    background-image: 'https://www.gratistodo.com/wp-content/uploads/2017/02/degradados-wallpapers-2.jpg´';
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-nav .nav-link {
+        font-size: 18px;
+    }
+
+    .dropdown-menu {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .form-control {
+        width: 100%;
+    }
 }
