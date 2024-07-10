@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Promoción</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Aquí puedes incluir tu archivo CSS personalizado -->
+    <link href="css/styles3.css" rel="stylesheet">
+</head>
+<body>
+    
+<nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="imagenes/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Hoteles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cruceros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Casas para vacacionar</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Semanas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/completas.html">Completas</a></li>
+              <li><a class="dropdown-item" href="/dias.html">Por días</a></li> 
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cotizaciones</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="container mt-4">
+        <h1 class="mb-4">Crear Nueva Promoción</h1>
+        <form action="/guardar_nueva_prom" method="POST">
+          <div class="form-group">
+              <label for="nombre">Nombre del lugar:</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" required>
+          </div>
+          
+          <div class="form-group">
+              <label for="descripcion">Descripción:</label>
+              <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-group">
+              <label for="imagen1">URL Imagen 1:</label>
+              <input type="url" class="form-control" id="imagen1" name="imagen[]" required>
+          </div>
+          
+          <div class="form-group">
+              <label for="imagen2">URL Imagen 2:</label>
+              <input type="url" class="form-control" id="imagen2" name="imagen[]" required>
+          </div>
+          
+          <div class="form-group">
+              <label for="imagen3">URL Imagen 3:</label>
+              <input type="url" class="form-control" id="imagen3" name="imagen[]" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Guardar Promoción</button>
+      </form>
+        </form>
+    </div>
+
+    <!-- Optional: jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el catálogo */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas adaptables */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.item {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+}
+
+.item img {
+    width: 100%;
+    display: block;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover; /* Ajuste de imagen */
+    height: 180px; /* Altura de la imagen */
+}
+
+.descripcion {
+    padding: 15px;
+}
+
+.descripcion h3 {
+    font-size: 20px; /* Aumentamos el tamaño del título */
+    margin-bottom: 10px;
+    color: #333; /* Color del título */
+    font-weight: bold; /* Añadimos negrita */
+    font-family: 'Arial', sans-serif; /* Cambiamos la fuente del título */
+}
+
+.descripcion p {
+    font-size: 16px; /* Aumentamos el tamaño del texto */
+    line-height: 1.6; /* Ajustamos el interlineado */
+    color: #555; /* Color del texto */
+    font-family: 'Arial', sans-serif; /* Cambiamos la fuente del texto */
+    text-align: justify;
+}
+
+.descripcion a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff; /* Color del enlace */
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Cambiamos la fuente del enlace */
+}
+
+.descripcion a:hover {
+    text-decoration: underline;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px; /* Altura del carrusel */
+    object-fit: cover; /* Ajuste de imagen */
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: auto;
+    color: #007bff; /* Color de las flechas */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #007bff; /* Color de fondo de las flechas */
+}
+
+.carousel-indicators {
+    bottom: -30px; /* Ajuste de posición */
+}
+
+.carousel-indicators li {
+    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo de los indicadores */
+}
+
+.carousel-indicators .active {
+    background-color: #007bff; /* Color de fondo del indicador activo */
+}
+
+body {
+    background-image: url(); /* Reemplaza 'ruta_de_tu_imagen.jpg' con la ruta de tu imagen de fondo */
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo blanco semi-transparente */
+    background-blend-mode: overlay; /* Mezcla la imagen de fondo con el color de fondo */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el cuerpo */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+
+
+  .descripcion {
+    text-align: center; /* Centra el contenido */
+}
+
+.descripcion button {
+    margin-top: 10px; /* Espaciado opcional */
+}
+
+.descripcion button {
+    margin-top: 10px; /* Espaciado opcional */
+}
+
+.formulario {
+    display: none; /* Por defecto oculto */
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff; /* Color blanco */
+    font-size: 22px;
+  }
+
+
+.navbar-custom {
+    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
+}
+.dropdown-menu {
+    max-height: 200px; /* Altura máxima de la lista desplegable */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    font-size: 22px;
+}
+.card {
+    height: auto; /* Altura automática para ajustar al contenido */
+}
+.card-body {
+    padding: 1.25rem; /* Ajuste de relleno interno */
+}
+.custom-control-prev, .custom-control-next {
+    background-color: transparent;
+    border: none;
+}
+
+.custom-control-prev-icon, .custom-control-next-icon {
+    background-image: none;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.custom-control-prev-icon {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.custom-control-next-icon {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}

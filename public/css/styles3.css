@@ -1,0 +1,14 @@
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff; /* Color blanco */
+  }
+
+
+.navbar-custom {
+    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
+}
+.dropdown-menu {
+    max-height: 200px; /* Altura máxima de la lista desplegable */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+}

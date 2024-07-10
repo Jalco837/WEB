@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Hotel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/nuevo_hotel.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="imagenes/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/hoteles.html">Hoteles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cruceros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Casas para vacacionar</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Semanas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/completas.html">Completas</a></li>
+              <li><a class="dropdown-item" href="/dias.html">Por días</a></li> 
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cotizaciones</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container mt-5">
+    <h2>Agregar Hotel</h2>
+    <form id="hotelForm">
+      <div class="mb-3">
+        <label for="location" class="form-label">Ubicación</label>
+        <select class="form-select" id="location" required>
+          <option value="Acapulco">Acapulco</option>
+          <option value="Baja Peninsula, Los cabos">Baja Peninsula, Los cabos</option>
+          <option value="Cancun, Playa, Cozumel">Cancun, Playa, Cozumel</option>
+          <option value="Guadalajara">Guadalajara</option>
+          <option value="México City">México City</option>
+          <option value="Mazatlan">Mazatlan</option>
+          <option value="Puebla">Puebla</option>
+          <option value="Puerto Vallarta">Puerto Vallarta</option>
+          <option value="San Cristobal de las Casas">San Cristobal de las Casas</option>
+          <option value="San Miguel de Allende">San Miguel de Allende</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="hotelName" class="form-label">Nombre del Hotel</label>
+        <input type="text" class="form-control" id="hotelName" required>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea class="form-control" id="description" rows="3" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="stars" class="form-label">Estrellas</label>
+        <select class="form-select" id="stars" required>
+          <option value="1">1 estrella</option>
+          <option value="2">2 estrellas</option>
+          <option value="3">3 estrellas</option>
+          <option value="4">4 estrellas</option>
+          <option value="5">5 estrellas</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="image1" class="form-label">Imagen 1</label>
+        <input type="url" class="form-control" id="image1" required>
+      </div>
+      <div class="mb-3">
+        <label for="image2" class="form-label">Imagen 2</label>
+        <input type="url" class="form-control" id="image2" required>
+      </div>
+      <div class="mb-3">
+        <label for="image3" class="form-label">Imagen 3</label>
+        <input type="url" class="form-control" id="image3" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Hotel</button>
+    </form>
+  </div>
+
+  <footer class="text-center mt-4">
+    <p>&copy; 2024 MONARCH TRAVEL AGENCY. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Manejar el envío del formulario para agregar hotel
+    document.getElementById('hotelForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const hotelData = {
+        location: document.getElementById('location').value,
+        name: document.getElementById('hotelName').value,
+        description: document.getElementById('description').value,
+        stars: document.getElementById('stars').value,
+        images: [
+          document.getElementById('image1').value,
+          document.getElementById('image2').value,
+          document.getElementById('image3').value
+        ]
+      };
+      // Enviar datos al backend (ajustar URL según sea necesario)
+      fetch('/api/hotels', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(hotelData)
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Hotel guardado exitosamente');
+          document.getElementById('hotelForm').reset();
+        } else {
+          throw new Error('Error al guardar el hotel');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>

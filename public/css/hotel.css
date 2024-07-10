@@ -1,0 +1,141 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el catálogo */
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas adaptables */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    max-width: 300px; /* Limitar ancho máximo de la tarjeta */
+    margin: auto; /* Centrar la tarjeta dentro de la columna */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    display: block;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+    height: 180px;
+}
+
+.card-body {
+    padding: 15px;
+    text-align: center;
+}
+
+.card-header {
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.card-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    font-family: 'Arial', sans-serif;
+    text-align: justify;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: auto;
+    color: #007bff;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent; /* Cambiar el fondo a transparente */
+}
+
+.carousel-indicators {
+    bottom: -30px;
+}
+
+.carousel-indicators li {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators .active {
+    background-color: #007bff;
+}
+
+body {
+    background-image: url();
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+}
+
+.formulario {
+    display: none;
+}
+
+.formulario form {
+    text-align: left;
+}
+
+.formulario .form-group {
+    margin-bottom: 15px;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: #ffffff; /* Color blanco */
+    font-size: 20px;
+  }
+
+
+.navbar-custom {
+    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
+}
+.dropdown-menu {
+    max-height: 200px; /* Altura máxima de la lista desplegable */
+    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+    font-size: 20px;
+}
+.form-label{
+    text-align: center;
+    font-size: 30px;
+}
+.form-select{
+    width: 200px;
+    font-size: 22px;
+    
+}
+  .footer-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Altura deseada del footer */
+}
+.btn-eliminar, .btn-actualizar {
+    display: none;
+}

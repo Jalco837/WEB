@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Viaje</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cotizaciones.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="imagenes/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hoteles.html">Hoteles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Cruceros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Casas para vacacionar</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Semanas
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="/completas.html">Completas</a></li>
+                  <li><a class="dropdown-item" href="/dias.html">Por días</a></li> 
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cotizaciones.html">Cotizaciones</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Formulario de Viaje</h2>
+        <form id="travelForm">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese su nombre" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Número de Celular</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Ingrese su número de celular" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="destination">Lugar/Destino</label>
+                    <input type="text" class="form-control" id="destination" name="destination" placeholder="Ingrese el lugar o destino" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="departureDate">Día de Salida</label>
+                    <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="returnDate">Día de Llegada</label>
+                    <input type="date" class="form-control" id="returnDate" name="returnDate" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="children">Cantidad de Niños/Menores de 18 años</label>
+                    <input type="number" class="form-control" id="children" name="children" min="0" placeholder="Ingrese la cantidad de niños" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="adults">Cantidad de Adultos</label>
+                    <input type="number" class="form-control" id="adults" name="adults" min="1" placeholder="Ingrese la cantidad de adultos" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea class="form-control" id="description" name="description" rows="2" placeholder="Describa lo que le gustaría hacer en el viaje" required></textarea>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" onclick="sendWhatsApp()">Enviar</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function sendWhatsApp() {
+            // Obtener los valores del formulario
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var destination = document.getElementById('destination').value;
+            var departureDate = document.getElementById('departureDate').value;
+            var returnDate = document.getElementById('returnDate').value;
+            var children = document.getElementById('children').value;
+            var adults = document.getElementById('adults').value;
+            var description = document.getElementById('description').value;
+
+            // Validar que todos los campos estén llenos
+            if (name && email && phone && destination && departureDate && returnDate && children && adults && description) {
+                // Enviar los datos al servidor
+                fetch('/guardar_cotizacion', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        destination,
+                        departureDate,
+                        returnDate,
+                        children,
+                        adults,
+                        description
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Limpiar el formulario
+                        document.getElementById('travelForm').reset();
+
+                        // Formar el mensaje de WhatsApp
+                        var message = `Hola! Me llamo ${name}. Mi correo es ${email} y mi número de celular es ${phone}. Me gustaría viajar a ${destination} del ${departureDate} al ${returnDate}. Somos ${adults} adultos y ${children} niños. Me gustaría ${description}.`;
+
+                        // Codificar el mensaje para que sea una URL válida
+                        var encodedMessage = encodeURIComponent(message);
+
+                        // Redirigir a WhatsApp
+                        window.open(`https://wa.me/525573868024?text=${encodedMessage}`, '_blank');
+                    } else {
+                        alert('Hubo un problema al enviar la cotización. Por favor, inténtelo de nuevo.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Hubo un problema al enviar la cotización. Por favor, inténtelo de nuevo.');
+                });
+            } else {
+                alert('Por favor, complete todos los campos antes de enviar.');
+            }
+        }
+    </script>
+</body>
+</html>

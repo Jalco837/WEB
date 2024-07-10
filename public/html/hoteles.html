@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Hoteles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/hotel.css">
+  
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="imagenes/logo.jpg" alt="Logo de Grupo Ancira" class="img-fluid navbar-logo" style="max-height: 40px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/hoteles.html">Hoteles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Cruceros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Casas para vacacionar</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Semanas
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/completas.html">Completas</a></li>
+              <li><a class="dropdown-item" href="/dias.html">Por días</a></li> 
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/cotizaciones.html">Cotizaciones</a></li>
+        </ul>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a id="btnAgregarHotel" class="nav-link" href="/nuevo_hotel.html" style="display: none;">Agregar</a>
+        </li>
+        <li class="nav-item">
+          <a id="btnCerrarSesion" class="nav-link" href="#" onclick="cerrarSesion()" style="display: none;">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      </div>
+    </div>
+  </nav>
+<div class="container mt-5">
+  <h2>Buscar hotel</h2>
+  <div class="mb-3">
+    <label for="searchLocation" class="form-label">Ubicación</label>
+    <select class="form-select" id="searchLocation">
+      <option value="Acapulco">Acapulco</option>
+      <option value="Baja Peninsula, Los cabos">Baja Peninsula, Los cabos</option>
+      <option value="Cancun, Playa, Cozumel">Cancun, Playa, Cozumel</option>
+      <option value="Guadalajara">Guadalajara</option>
+      <option value="México City">México City</option>
+      <option value="Mazatlan">Mazatlan</option>
+      <option value="Puebla">Puebla</option>
+      <option value="Puerto Vallarta">Puerto Vallarta</option>
+      <option value="San Cristobal de las Casas">San Cristobal de las Casas</option>
+      <option value="San Miguel de Allende">San Miguel de Allende</option>
+    </select>
+  </div>
+  <button id="searchButton" class="btn btn-primary">Buscar</button>
+  <div id="hotelResults" class="row row-cols-1 row-cols-md-4 mt-3"></div>
+</div>
+
+<footer class="text-center mt-4">
+  <p>&copy; 2024 MONARCH TRAVEL AGENCY. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function generateStars(starCount) {
+    let stars = '';
+    for (let i = 0; i < starCount; i++) {
+      stars += '<i class="fas fa-star text-warning"></i>';
+    }
+    return stars;
+  }
+
+  // Función para verificar el estado de inicio de sesión
+  async function checkAuth() {
+    try {
+      const response = await fetch('/is-logged-in');
+      const data = await response.json();
+      return data.isLoggedIn;
+    } catch (error) {
+      console.error('Error al verificar la autenticación:', error);
+      return false;
+    }
+  }
+
+  async function cerrarSesion() {
+    try {
+      const response = await fetch('/logout', { method: 'POST' }); // URL del endpoint para cerrar sesión
+      const data = await response.json();
+      if (data.success) {
+        window.location.href = '/index.html'; // Redirigir a la página de inicio después de cerrar sesión
+      } else {
+        alert('Error al cerrar sesión');
+      }
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+      alert('Error al cerrar sesión');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async function() {
+    const isLoggedIn = await checkAuth();
+    if (isLoggedIn) {
+      document.getElementById('btnAgregarHotel').style.display = 'block';
+      document.getElementById('btnCerrarSesion').style.display = 'block';
+    }
+  });
+    
+    document.getElementById('searchButton').addEventListener('click', async function() {
+    const location = document.getElementById('searchLocation').value;
+    const hotelResults = document.getElementById('hotelResults');
+    hotelResults.innerHTML = '';
+
+    try {
+      const response = await fetch(`/api/hotels?location=${location}`);
+      const data = await response.json();
+      const isLoggedIn = await checkAuth();
+
+      data.forEach(hotel => {
+        const hotelCard = document.createElement('div');
+        hotelCard.classList.add('col', 'mb-4');
+        hotelCard.innerHTML = `
+          <div class="card h-100">
+            <div class="card-header">${hotel.name}</div>
+            <div class="card-body">
+              <div class="stars mb-2">${generateStars(hotel.stars)}</div>
+              <p class="card-text">${hotel.description}</p>
+              <div id="carousel${hotel._id}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                  ${hotel.images.map((img, index) => `
+                    <div class="carousel-item ${index === 0 ? 'active' : ''}">
+                      <img src="${img}" class="d-block w-100" alt="Image ${index + 1}">
+                    </div>`).join('')}
+                </div>
+                <a class="carousel-control-prev" href="#carousel${hotel._id}" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel${hotel._id}" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Siguiente</span>
+                </a>
+              </div>
+              <button class="btn btn-primary btn-reservar mt-3">Reservar</button>
+              <button class="btn btn-danger btn-eliminar mt-3 auth-required" data-id="${hotel._id}" style="display: ${isLoggedIn ? 'inline-block' : 'none'};">Eliminar</button>
+              <button class="btn btn-info btn-actualizar mt-3 auth-required" data-id="${hotel._id}" style="display: ${isLoggedIn ? 'inline-block' : 'none'};">Actualizar</button>
+              <div class="formulario mt-3" style="display:none;">
+                  <form>
+                      <div class="form-group">
+                          <label for="nombre">Nombre:</label>
+                          <input type="text" class="form-control" id="nombre">
+                      </div>
+                      <div class="form-group">
+                          <label for="email">Correo Electrónico:</label>
+                          <input type="email" class="form-control" id="email">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        `;
+        hotelResults.appendChild(hotelCard);
+
+        hotelCard.querySelector('.btn-reservar').addEventListener('click', function() {
+          const formulario = hotelCard.querySelector('.formulario');
+          formulario.style.display = formulario.style.display === 'block' ? 'none' : 'block';
+        });
+
+        hotelCard.querySelector('.btn-eliminar').addEventListener('click', function() {
+          const hotelId = this.getAttribute('data-id');
+          if (confirm('¿Estás seguro de que deseas eliminar este hotel?')) {
+            fetch(`/api/hotels/${hotelId}`, { method: 'DELETE' })
+            .then(response => {
+              if (response.ok) {
+                alert('Hotel eliminado con éxito');
+                hotelCard.remove();
+              } else {
+                alert('Error al eliminar el hotel');
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('Error al eliminar el hotel');
+            });
+          }
+        });
+
+        hotelCard.querySelector('.btn-actualizar').addEventListener('click', function() {
+          const hotelId = this.getAttribute('data-id');
+          const location = hotel.location;
+          const name = hotel.name;
+          const description = hotel.description;
+          const stars = hotel.stars;
+          const images = hotel.images.join(',');
+
+          window.location.href = `/editar_hotel.html?id=${hotelId}&location=${encodeURIComponent(location)}&name=${encodeURIComponent(name)}&description=${encodeURIComponent(description)}&stars=${stars}&images=${encodeURIComponent(images)}`;
+        });
+
+        hotelCard.querySelector('.formulario form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          const nombre = this.querySelector('#nombre').value;
+          const email = this.querySelector('#email').value;
+          const hotelName = hotelCard.querySelector('.card-header').innerText;
+          const description = hotelCard.querySelector('.card-text').innerText;
+
+          const message = `Hola! Me gustaría reservar el hotel ${hotelName} de ${location}. Mi nombre es ${nombre}, mi correo electrónico es ${email}. Descripción: ${description}.`;
+          const encodedMessage = encodeURIComponent(message);
+          window.open(`https://wa.me/525573868024?text=${encodedMessage}`, '_blank');
+
+          this.closest('.formulario').style.display = 'none';
+        });
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al cargar los hoteles');
+    }
+  });
+
+
+</script>
+
+</script>
+</body>
+</html>
