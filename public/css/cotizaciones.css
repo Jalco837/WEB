@@ -62,3 +62,14 @@ h2 {
     overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
     font-size: 22px;
 }
+/* Media queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .navbar-custom .navbar-brand,
+    .navbar-custom .navbar-nav .nav-link {
+        font-size: 18px;
+    }
+  
+    .dropdown-menu {
+        font-size: 18px;
+    }
+}
