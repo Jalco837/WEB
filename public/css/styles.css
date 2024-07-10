@@ -258,6 +258,11 @@ footer p {
       font-size: 1.5rem;
   }
 
+  .redes-sociales a {
+      margin-right: 10px; /* Reducir el espacio entre los iconos */
+      margin-bottom: 10px; /* Reducir el espacio hacia abajo entre los iconos */
+  }
+
   .redes-sociales img {
       width: 35px; /* Ancho de los iconos */
       height: 35px; /* Altura de los iconos */
