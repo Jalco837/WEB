@@ -28,22 +28,24 @@ h2 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 30px;
 }
+/* Estilos para la barra de navegación personalizada */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
-    color: #ffffff; /* Color blanco */
-    font-size: 22px;
-  }
-
+  color: #ffffff; /* Color blanco */
+  font-size: 22px;
+}
 
 .navbar-custom {
-    background-color: #73C6B6; /* Cambia el color de fondo del navbar a azul */
+  background-color: #73C6B6; /* Cambia el color de fondo del navbar */
 }
+
 .dropdown-menu {
-    max-height: 200px; /* Altura máxima de la lista desplegable */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-    overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
-    font-size: 22px;
+  max-height: 200px; /* Altura máxima de la lista desplegable */
+  overflow-y: auto; /* Barra de desplazamiento vertical si es necesario */
+  overflow-x: hidden; /* Oculta la barra de desplazamiento horizontal */
+  font-size: 22px;
 }
+
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-nav .nav-link {
     color: #ffffff; /* Color blanco */
