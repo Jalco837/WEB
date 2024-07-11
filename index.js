@@ -2,20 +2,30 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session'); 
+const session = require('express-session');
 require('dotenv').config();
-
-const hotelRoutes = require('./routes/hotelRoutes');
-const promocionRoutes = require('./routes/promocionRoutes');
-const cotizacionRoutes = require('./routes/cotizacionRoutes');
-const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Conectar a MongoDB
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conectado a MongoDB Atlas'))
-  .catch(err => console.error('Error de conexión a MongoDB:', err.message));
+  .catch(err => {
+    console.error('Error de conexión a MongoDB:', err.message);
+    process.exit(1);
+  });
+
+// Definir esquema y modelo de Hotel
+const hotelSchema = new mongoose.Schema({
+  location: String,
+  name: String,
+  description: String,
+  stars: Number,
+  images: [String]
+});
+
+const Hotel = mongoose.model('Hotel', hotelSchema);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -29,11 +39,60 @@ app.use(session({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(hotelRoutes);
-app.use(promocionRoutes);
-app.use(cotizacionRoutes);
-app.use(userRoutes);
+// Ruta para obtener hoteles por ubicación
+app.get('/api/hotels', async (req, res) => {
+  try {
+    const location = req.query.location;
+    const hotels = await Hotel.find({ location: location });
+    res.status(200).send(hotels);
+  } catch (error) {
+    res.status(500).send({ message: 'Error al obtener los hoteles', error });
+  }
+});
 
+// Ruta para manejar la solicitud POST y guardar un hotel
+app.post('/api/hotels', async (req, res) => {
+  try {
+    const hotel = new Hotel(req.body);
+    await hotel.save();
+    res.status(201).send({ message: 'Hotel guardado exitosamente' });
+  } catch (error) {
+    res.status(500).send({ message: 'Error al guardar el hotel', error });
+  }
+});
+
+// Ruta para actualizar un hotel específico
+app.put('/api/hotels/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, description, stars, images } = req.body;
+
+  try {
+    const hotel = await Hotel.findByIdAndUpdate(id, {
+      name,
+      description,
+      stars,
+      images
+    }, { new: true });
+
+    res.status(200).send({ message: 'Hotel actualizado exitosamente', hotel });
+  } catch (error) {
+    console.error('Error al actualizar el hotel:', error);
+    res.status(500).send({ message: 'Error interno al actualizar el hotel', error });
+  }
+});
+
+// Ruta para eliminar un hotel
+app.delete('/api/hotels/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Hotel.findByIdAndDelete(id);
+    res.status(200).send({ message: 'Hotel eliminado exitosamente' });
+  } catch (error) {
+    res.status(500).send({ message: 'Error al eliminar el hotel', error });
+  }
+});
+
+// Servir archivo HTML principal (index.html)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
