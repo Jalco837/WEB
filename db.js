@@ -1,46 +1,56 @@
-import mongoose from 'mongoose';
+// db.js
+
+const mongoose = require('mongoose');
 
 // Conexión a MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
-})
-.then(() => console.log('Conexión a MongoDB exitosa'))
-.catch(error => console.error('Error al conectar a MongoDB:', error));
+const dbURI = 'mongodb+srv://Johan:jalc2002@cluster0.0hh8wek.mongodb.net/agencia';
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Conectado a MongoDB Atlas'))
+  .catch(err => console.error('Error de conexión a MongoDB:', err.message));
 
-// Definición del esquema y modelo del hotel
+// Definir el esquema y el modelo para la colección semanas_completas
+const Schema = mongoose.Schema;
+const semanaCompletaSchema = new Schema({
+  nombre: String,
+  descripcion: String,
+  imagenes: [String]
+});
+const SemanaCompleta = mongoose.model('SemanaCompleta', semanaCompletaSchema);
+
+// Función para guardar una semana completa en la base de datos
+async function guardarSemanaCompleta(datosSemana) {
+  try {
+    const nuevaSemanaCompleta = new SemanaCompleta(datosSemana);
+    await nuevaSemanaCompleta.save();
+    console.log('Datos guardados exitosamente.');
+  } catch (error) {
+    console.error('Error al guardar los datos:', error);
+    throw error; // Puedes manejar este error en tu aplicación principal
+  }
+}
+
+// Definir el esquema y el modelo para la colección hoteles
 const hotelSchema = new mongoose.Schema({
+  location: String,
   name: String,
   description: String,
-  stars: Number,
   images: [String]
 });
 
 const Hotel = mongoose.model('Hotel', hotelSchema);
 
-// Definición del esquema y modelo de cotización
-const cotizacionSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  destination: String,
-  departureDate: Date,
-  returnDate: Date,
-  children: Number,
-  adults: Number,
-  description: String
-});
-
-const Cotizacion = mongoose.model('Cotizacion', cotizacionSchema);
-
-// Definición del esquema y modelo de Semana Completa
-const semanaCompletaSchema = new mongoose.Schema({
-  nombre: String,
-  descripcion: String,
-  imagenes: [String]
-});
-
-const SemanaCompleta = mongoose.model('SemanaCompleta', semanaCompletaSchema);
-
-export { Hotel, Cotizacion, SemanaCompleta };
+// Función para guardar un hotel en la base de datos
+async function guardarHotel(datosHotel) {
+  try {
+    const nuevoHotel = new Hotel(datosHotel);
+    await nuevoHotel.save();
+    console.log('Datos del hotel guardados exitosamente.');
+  } catch (error) {
+    console.error('Error al guardar los datos del hotel:', error);
+    throw error; // Puedes manejar este error en tu aplicación principal
+  }
+}
+module.exports = {
+  guardarSemanaCompleta,
+  guardarHotel
+};
