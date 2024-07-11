@@ -1,11 +1,10 @@
 const express = require('express');
-import mongoose from 'mongoose';
-import path from 'path';
-import bodyParser from 'body-parser';
-import session from 'express-session';
+const mongoose = require('mongoose');
+const path = require('path');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const { guardarSemanaCompleta, guardarHotel } = require('./db.js');
-import dotenv from 'dotenv';
-
+const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
