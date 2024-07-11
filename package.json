@@ -1,9 +1,9 @@
 {
-  "name": "prueba",
+  "name": "tu-proyecto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Descripción de tu proyecto",
   "main": "index.js",
-  "type": "module",
+  "type": "commonjs", 
   "scripts": {
     "start": "node index.js"
   },
