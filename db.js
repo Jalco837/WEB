@@ -1,5 +1,3 @@
-// db.js
-
 const mongoose = require('mongoose');
 
 // Conexión a MongoDB
@@ -50,7 +48,8 @@ async function guardarHotel(datosHotel) {
     throw error; // Puedes manejar este error en tu aplicación principal
   }
 }
+
 module.exports = {
   guardarSemanaCompleta,
-  guardarHotel
+  guardarHotel  // Asegúrate de exportar también la función guardarHotel
 };

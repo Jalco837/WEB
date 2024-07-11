@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import path from 'path';
 import bodyParser from 'body-parser';
 import session from 'express-session';
-import { guardarSemanaCompleta, guardarHotel } from './db.js'; // Importa las funciones del archivo db.js
+const { guardarSemanaCompleta, guardarHotel } = require('./db.js');
 import dotenv from 'dotenv';
 
 dotenv.config();
