@@ -1,7 +1,7 @@
 {
-  "name": "tu-proyecto",
+  "name": "prueba",
   "version": "1.0.0",
-  "description": "Descripción de tu proyecto",
+  "description": "",
   "main": "index.js",
   "type": "commonjs", 
   "scripts": {
